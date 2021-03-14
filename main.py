@@ -1,3 +1,4 @@
+# import required modules
 from flask import Flask, render_template, request, url_for, redirect, flash
 from matplotlib.colors import rgb2hex
 from sklearn.cluster import KMeans
@@ -6,12 +7,13 @@ from PIL import Image
 import numpy as np
 import os
 
+# setup flask application
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "8BYkEfBA6O6donWlSihBXox7C0sKR6b"
 app.config['UPLOAD_PATH'] = "static"
 
 
-# home page route
+# home route
 @app.route("/", methods=["GET", "POST"])
 def home():
 
