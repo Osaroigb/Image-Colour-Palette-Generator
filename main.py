@@ -1,7 +1,7 @@
 # import required modules
 from flask import Flask, render_template, request, url_for, redirect, flash
 from matplotlib.colors import rgb2hex
-from sklearn.cluster import KMeans
+from sklearn.cluster import MiniBatchKMeans
 from collections import Counter
 from PIL import Image
 import numpy as np
@@ -32,7 +32,7 @@ def home():
             img_object = Image.open(fp=f"static/{img.filename}", mode="r")  # open the image file
             img_array = np.array(img_object)  # and convert into a 2D array
 
-            clt = KMeans(n_clusters=10)
+            clt = MiniBatchKMeans(n_clusters=10)
             clt.fit(img_array.reshape(-1, 3))
 
             n_pixels = len(clt.labels_)
