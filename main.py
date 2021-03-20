@@ -30,7 +30,7 @@ def home():
             img.save( os.path.join(app.config['UPLOAD_PATH'], img.filename) )
 
             img_object = Image.open(fp=f"static/{img.filename}", mode="r")  # open the image file
-            img_array = np.array(p_object=img_object)  # and convert into a 2D array
+            img_array = np.array(img_object)  # and convert into a 2D array
 
             clt = KMeans(n_clusters=10)
             clt.fit(img_array.reshape(-1, 3))
